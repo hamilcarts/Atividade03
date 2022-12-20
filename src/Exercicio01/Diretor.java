@@ -1,34 +1,45 @@
 package Exercicio01;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Diretor extends Funcionario{
-    private ArrayList<String> professorOrientador;
+    private List<Professor> professoresOrientados;
 
-    public void orientarProfessor(){
-        System.out.println("orientar professor");
+    public Diretor(String nome, String cpf, double salario, Agenda agenda) {
+        super(nome, cpf, salario, agenda);
+        this.professoresOrientados = new ArrayList<>();
+    }
+    public void orientarProfessor(Professor professor){
+        System.out.println("Professor " + professor.getNome() + " foi orientado pelo diretor.");
+        professoresOrientados.add(professor);
     }
 
     public void exibirProfessoresOrientados(){
-        System.out.println("Professores orientados: ");
-    }
-    public ArrayList<String> getProfessorOrientador() {
-        return professorOrientador;
+        System.out.println("Professores orientados pelo diretor: ");
+        if(professoresOrientados.size() == 0){
+            System.out.println("Nenhum professor orientado pelo diretor.");
+            return;
+        }
+        int i = 1;
+        for(Professor professor : professoresOrientados){
+            System.out.println(i + " - " + professor.getNome());
+            i++;
+        }
     }
 
-    public void setProfessorOrientador(ArrayList<String> professorOrientador) {
-        this.professorOrientador = professorOrientador;
+    public List<Professor> getProfessoresOrientados() {
+        return professoresOrientados;
     }
 
-    public Diretor(String nome, String cpf, double salario, Agenda agenda, ArrayList<String> professorOrientador) {
-        super(nome, cpf, salario, agenda);
-        this.professorOrientador = professorOrientador;
+    public void setProfessoresOrientados(List<Professor> professoresOrientados) {
+        this.professoresOrientados = professoresOrientados;
     }
 
     @Override
     public String toString() {
         return "Diretor{" +
-                "professorOrientador=" + professorOrientador +
+                "professoresOrientados=" + professoresOrientados +
                 '}';
     }
 }

@@ -80,6 +80,15 @@ public class Main {
         // Removendo o professor da turma1
         coordenador.desalocarProfessor(professor1, turma1);
         System.out.println(turma1);
+
+        // Criando um diretor
+        Diretor diretor = new Diretor("Didi", "123123123-12", 8000., new Agenda());
+        // Exibindo a lista vazia de professores orientados pelo diretor
+        diretor.exibirProfessoresOrientados();
+        // Adicionando um professor à lista de professores orientados pelo diretor
+        diretor.orientarProfessor(professor1);
+        // Exibindo a lista de professores orientados pelo diretor
+        diretor.exibirProfessoresOrientados();
     }
 
 }

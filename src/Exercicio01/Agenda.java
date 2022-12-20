@@ -1,31 +1,38 @@
 package Exercicio01;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Agenda {
-    Map<String, String> agenda;
 
-    public Agenda() {
-        this.agenda = new HashMap<>();
+
+    //Map<String, String> agenda;
+    List<Compromisso> listaDeCompromissos = new ArrayList<>();
+
+    public void cadastrarCompromisso(Compromisso compromisso){
+        listaDeCompromissos.add(compromisso);
     }
 
-    public void setAgenda(Map<String, String> agenda) {
-        this.agenda = agenda;
+    public void removerCompromisso(String titulo){
+        if(listaDeCompromissos.size() == 0) return;
+        for(Compromisso compromisso : listaDeCompromissos){
+            if(compromisso.getTitulo().equals(titulo)){
+                listaDeCompromissos.remove(compromisso);
+            }
+        }
     }
 
-    public Map<String, String> getAgenda() {
-        return agenda;
+
+    public List<Compromisso> getListaDeCompromissos() {
+        return listaDeCompromissos;
     }
 
-    public void adicionarCompromisso(String titulo, String descricao) {
-        this.agenda.put(titulo, descricao);
+    public void setListaDeCompromissos(List<Compromisso> listaDeCompromissos) {
+        this.listaDeCompromissos = listaDeCompromissos;
     }
 
     @Override
     public String toString() {
-        return "" +
-                "" + agenda +
-                "";
+        return "Agenda: " + listaDeCompromissos;
     }
 }

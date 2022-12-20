@@ -12,6 +12,9 @@ public class Professor extends Funcionario{
         this.turma = turma;
     }
 
+    public void cadastrarArtigo(String artigo){
+        this.artigosPublicados.add(artigo);
+    }
     public ArrayList<String> getArtigosPublicados() {
         return artigosPublicados;
     }

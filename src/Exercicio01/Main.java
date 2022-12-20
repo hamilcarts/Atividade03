@@ -8,9 +8,11 @@ public class Main {
     public static void main(String[] args) {
 
         // Criando a agenda do professor
-        Agenda agendaProfessor = new Agenda();
-        agendaProfessor.cadastrarCompromisso(new Compromisso("Tarefa 1", "Aula 01"));
-        agendaProfessor.cadastrarCompromisso(new Compromisso("Tarefa 2", "Aula 02"));
+        Agenda agendaProfessor1 = new Agenda();
+        agendaProfessor1.cadastrarCompromisso(new Compromisso("Tarefa 1", "Aula 01"));
+        agendaProfessor1.cadastrarCompromisso(new Compromisso("Tarefa 2", "Aula 02"));
+        Agenda agendaProfessor2 = new Agenda();
+        agendaProfessor2.cadastrarCompromisso(new Compromisso("Tarefa 3", "aula 03"));
 
         // Criando artigos e inserindo na lista
         Artigo artigo1 = new Artigo("A casa", 2022);
@@ -25,7 +27,10 @@ public class Main {
         List<Turma> turmasProfessor = new ArrayList<>(Arrays.asList(turma1, turma2, turma3));
 
         // Criando o professor1
-        Professor professor1 = new Professor("José","12345678901",3000, agendaProfessor, listaDeArtigos, turmasProfessor);
+        Professor professor1 = new Professor("José","12345678901",3000, agendaProfessor1, listaDeArtigos, turmasProfessor);
+        Professor professor2 = new Professor("Ricardo","12345678902",5000, agendaProfessor2, listaDeArtigos, turmasProfessor);
+
+
 
         // Cadastrando novos artigos na lista de artigos do professor
         professor1.cadastrarArtigo(new Artigo("Pedro", 2014));
@@ -37,9 +42,9 @@ public class Main {
         System.out.println(professor1.getArtigosPublicados().toString());
 
         // Removendo um compromisso da agenda do professor
-        System.out.println(professor1.getAgenda().toString());
-        professor1.getAgenda().removerCompromisso("Tarefa 1");
-        System.out.println(professor1.getAgenda().toString());
+//        System.out.println(professor1.getAgenda().toString());
+//        professor1.getAgenda().removerCompromisso("Tarefa 1");
+//        System.out.println(professor1.getAgenda().toString());
 
         // Removendo uma turma existente
         System.out.println("Turmas do professor1");
@@ -52,5 +57,16 @@ public class Main {
         professor1.removerTurma("5H", 2010);
         // Verificando que a lista de turmas continua igual
         System.out.println(professor1.getTurmasPeriodo().toString());
+
+        // Criando um secretário com agenda vazia
+        System.out.println("Secretário");
+        Secretario secretario = new Secretario("Paulo", "123456789-11", 3000., new Agenda());
+        System.out.println(secretario);
+
+        // Exibindo a agenda dos professores e do próprio secretário
+        secretario.listarAgenda(professor1);
+        secretario.listarAgenda(professor2);
+        secretario.listarAgenda(secretario);
     }
+
 }

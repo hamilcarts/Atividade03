@@ -27,8 +27,8 @@ public class Main {
         List<Turma> turmasProfessor = new ArrayList<>(Arrays.asList(turma1, turma2, turma3));
 
         // Criando o professor1
-        Professor professor1 = new Professor("José","12345678901",3000, agendaProfessor1, listaDeArtigos, turmasProfessor);
-        Professor professor2 = new Professor("Ricardo","12345678902",5000, agendaProfessor2, listaDeArtigos, turmasProfessor);
+        Professor professor1 = new Professor("Paulo","12345678901",3000, agendaProfessor1, listaDeArtigos, turmasProfessor);
+        Professor professor2 = new Professor("Pedro","12345678902",5000, agendaProfessor2, listaDeArtigos, turmasProfessor);
 
 
 
@@ -60,13 +60,26 @@ public class Main {
 
         // Criando um secretário com agenda vazia
         System.out.println("Secretário");
-        Secretario secretario = new Secretario("Paulo", "123456789-11", 3000., new Agenda());
+        Secretario secretario = new Secretario("Silvio", "123456789-11", 3000., new Agenda());
         System.out.println(secretario);
 
         // Exibindo a agenda dos professores e do próprio secretário
         secretario.listarAgenda(professor1);
         secretario.listarAgenda(professor2);
         secretario.listarAgenda(secretario);
+
+        // Criando um coordenador
+        Coordenador coordenador = new Coordenador("Carlos", "222333145-78", 2750., new Agenda());
+        // Exibindo a turma 1 sem professor alocado
+        System.out.println(turma1);
+        // Alocando um professor na turma1
+        coordenador.alocarProfessor(professor1, turma1);
+        // Exibindo a turma1 com um professor alocado
+        System.out.println(turma1);
+
+        // Removendo o professor da turma1
+        coordenador.desalocarProfessor(professor1, turma1);
+        System.out.println(turma1);
     }
 
 }
